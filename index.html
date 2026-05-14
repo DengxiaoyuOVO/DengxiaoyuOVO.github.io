@@ -180,6 +180,7 @@
         .cat-wf { background: #dbeafe; color: #1e40af; }
         .cat-zhh { background: #ede9fe; color: #6d28d9; }
         .cat-en { background: #d1fae5; color: #065f46; }
+        .cat-jc { background: #fef3c7; color: #92400e; }
         .card-title {
             font-size: 1.15rem;
             font-weight: 700;
@@ -288,6 +289,7 @@
             <span class="tag" data-cat="wanfang">万方/维普</span>
             <span class="tag" data-cat="platform">综合平台</span>
             <span class="tag" data-cat="english">英文查重</span>
+                <span class="tag" data-cat="jiangchong">降重工具</span>
         </div>
         <div class="result-count" id="resultCount"></div>
         <div class="grid" id="cardGrid"></div>
@@ -411,6 +413,14 @@
                 category: "english",
                 url: "https://www.grammarly.com/plagiarism-checker",
                 catClass: "cat-en"
+            },
+            {
+                name: 'SpeedAI 降重',
+                desc: 'AI智能论文降重改写工具，支持中英文，保持原意降低重复率。',
+                quota: '免费额度：注册即送免费字数，支持在线试降',
+                category: 'jiangchong',
+                url: 'https://speedai.com',
+                catClass: 'cat-jc'
             }
         ];
 
@@ -437,7 +447,7 @@
             }
 
             grid.innerHTML = filtered.map(site => {
-                const labels = { cnki: "知网系", wanfang: "万方/维普", platform: "综合平台", english: "英文查重" };
+                const labels = { cnki: "知网系", wanfang: "万方/维普", platform: "综合平台", english: "英文查重", jiangchong: "降重工具" };
                 return '<div class="card">' +
                     '<span class="card-category ' + site.catClass + '">' + (labels[site.category] || site.category) + '</span>' +
                     '<h3 class="card-title">' + site.name + '</h3>' +
