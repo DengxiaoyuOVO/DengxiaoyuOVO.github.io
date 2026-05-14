@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论文查重导航 | 免费查重网站合集</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #eff6ff;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+            --radius: 12px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header-top { display: flex; align-items: center; padding: 10px 24px 0; position: relative; z-index: 1; }
+        .header-top .logo-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.5); }
+        .header-top .byline { margin-left: 10px; font-size: 1.25rem; font-weight: 600; opacity: 0.85; }
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+            color: white;
+            padding: 48px 20px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 60%);
+        }
+        .header-content { position: relative; z-index: 1; }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+        .header .badge {
+            display: inline-block;
+            margin-top: 16px;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .main {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+        .search-wrapper {
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 48px;
+            font-size: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            background: var(--card-bg);
+            color: var(--text);
+            outline: none;
+            transition: all 0.25s;
+            font-family: inherit;
+        }
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.1);
+        }
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+        .tag {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.25s;
+            user-select: none;
+            font-family: inherit;
+        }
+        .tag:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .tag.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .card-category {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        .cat-zh { background: #fef3c7; color: #b45309; }
+        .cat-wf { background: #dbeafe; color: #1e40af; }
+        .cat-zhh { background: #ede9fe; color: #6d28d9; }
+        .cat-en { background: #d1fae5; color: #065f46; }
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            flex: 1;
+            line-height: 1.5;
+        }
+        .card-quota {
+            font-size: 0.85rem;
+            padding: 8px 12px;
+            background: #f0fdf4;
+            border-radius: 8px;
+            color: #166534;
+            margin-bottom: 16px;
+            border-left: 3px solid #22c55e;
+        }
+        .card-btn {
+            display: block;
+            text-align: center;
+            padding: 10px 0;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s;
+            letter-spacing: 1px;
+        }
+        .card-btn:hover {
+            background: #1d4ed8;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.35);
+        }
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+        .empty-state p { font-size: 1.1rem; }
+        .result-count {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            padding: 28px 20px;
+            text-align: center;
+        }
+        .footer .author-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text);
+        }
+        .footer .author-bio {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        .footer .author-contact { font-size: 0.85rem; color: var(--text-secondary); margin-top: 6px; } .footer .disclaimer {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 12px;
+        }
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.6rem; }
+            .header-top { padding: 6px 12px 0; } .header-top .byline { font-size: 0.9rem; } .header { padding: 24px 16px 28px; }
+            .main { padding: 20px 16px 40px; }
+            .tags { gap: 6px; }
+            .tag { padding: 6px 14px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top"><img src="logo.png" alt="logo" class="logo-img" onerror="this.style.display='none'"><span class="byline">by：Dest1nyH</span></div>
+        <div class="header-content">
+            <h1>论文查重导航</h1>
+            <p class="subtitle">汇集免费查重资源 &middot; 一键直达 &middot; 省时省力</p>
+            <span class="badge">✓ 链接已校验 · 持续更新中</span>
+        </div>
+    </header>
+    <main class="main">
+        <div class="search-wrapper">
+            <span class="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </span>
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索查重网站名称或描述...">
+        </div>
+        <div class="tags" id="tagContainer">
+            <span class="tag active" data-cat="all">全部</span>
+            <span class="tag" data-cat="cnki">知网系</span>
+            <span class="tag" data-cat="wanfang">万方/维普</span>
+            <span class="tag" data-cat="platform">综合平台</span>
+            <span class="tag" data-cat="english">英文查重</span>
+        </div>
+        <div class="result-count" id="resultCount"></div>
+        <div class="grid" id="cardGrid"></div>
+    </main>
+    <footer class="footer">
+        <p class="author-name">作者：Dest1nyH</p>
+        <p class="author-bio">一个想帮大家省钱查重的普通学生，持续收录靠谱的免费查重渠道。</p>
+        <p class="author-contact">作者联系方式（q/v同号）：1843262744 &nbsp; 欢迎提出意见</p>
+        <p class="disclaimer">本站仅提供导航链接，不存储任何论文内容，不对第三方网站的查重结果负责。建议将论文提交至多个平台交叉验证。</p>
+    </footer>
+    <script>
+        const sites = [
+            {
+                name: "中国知网查重（机构入口）",
+                desc: "知网AMLC学术不端检测系统，仅限高校/期刊编辑部使用，个人无法直接访问。个人用户请看下方的知网个人查重服务。",
+                quota: "免费额度：部分高校学生可通过学校入口免费查1-2次",
+                category: "cnki",
+                url: "https://check.cnki.net/",
+                catClass: "cat-zh"
+            },
+            {
+                name: "知网个人查重服务",
+                desc: "知网官方推出的个人付费查重入口，支持期刊论文、学位论文等类型，结果权威。",
+                quota: "免费额度：无免费次数，1.5元/千字",
+                category: "cnki",
+                url: "https://cx.cnki.net/",
+                catClass: "cat-zh"
+            },
+            {
+                name: "万方数据查重",
+                desc: "万方检测系统，国内三大查重系统之一，与知网互有侧重，适合期刊论文。",
+                quota: "免费额度：新用户注册可获免费检测机会",
+                category: "wanfang",
+                url: "https://check.wanfangdata.com.cn/",
+                catClass: "cat-wf"
+            },
+            {
+                name: "维普查重",
+                desc: "维普论文检测系统，数据库覆盖范围广，价格相对亲民，本科生常用。",
+                quota: "免费额度：注册送免费字数，可参加活动获取次数",
+                category: "wanfang",
+                url: "http://vpcs.cqvip.com/",
+                catClass: "cat-wf"
+            },
+            {
+                name: "PaperYY 论文狗",
+                desc: "老牌免费查重平台，每天有免费版检测名额，支持多种检测库选择。",
+                quota: "免费额度：每日限量免费查重 + 参与活动获取更多",
+                category: "platform",
+                url: "https://www.paperyy.com/",
+                catClass: "cat-zhh"
+            },
+            {
+                name: "PaperFree",
+                desc: "在线论文检测平台，首创「机器人降重」功能，检测后可直接智能降重。",
+                quota: "免费额度：首次注册送免费字数，分享可再获额度",
+                category: "platform",
+                url: "https://www.paperfree.cn/",
+                catClass: "cat-zhh"
+            },
+            {
+                name: "PaperPass",
+                desc: "国内知名查重品牌，比对数据库全面，检测报告详细，适合初稿自查。",
+                quota: "免费额度：注册赠送免费检测字数约3000字",
+                category: "platform",
+                url: "https://www.paperpass.com/",
+                catClass: "cat-zhh"
+            },
+            {
+                name: "大雅查重",
+                desc: "超星旗下查重系统，与学习通账号打通，高校学生可便捷使用。",
+                quota: "免费额度：学习通用户有免费检测次数",
+                category: "platform",
+                url: "https://www.dayainfo.com/",
+                catClass: "cat-zhh"
+            },
+            {
+                name: "CheckPass 论文通行证",
+                desc: "聚合知网、万方、维普等多种检测系统，一站式比价和选择。",
+                quota: "免费额度：无直接免费，但聚合多家可对比选最低价",
+                category: "platform",
+                url: "https://www.checkpass.net/",
+                catClass: "cat-zhh"
+            },
+            {
+                name: "格子达查重",
+                desc: "专注论文检测与降重辅助，报告清晰直观，高校合作平台。",
+                quota: "免费额度：新用户注册可免费检测部分字数",
+                category: "platform",
+                url: "https://www.gezida.com/",
+                catClass: "cat-zhh"
+            },
+            {
+                name: "PaperTime 论文时间",
+                desc: "新兴免费查重平台，支持多种检测库对比，每日限量发放免费检测名额。",
+                quota: "免费额度：每日限量免费查重，邀请好友可获取更多",
+                category: "platform",
+                url: "https://www.papertime.cn/",
+                catClass: "cat-zhh"
+            },
+            {
+                name: "PaperOK",
+                desc: "老牌论文检测平台，数据库持续更新，支持中英文混检。",
+                quota: "免费额度：注册即送免费字数，每日签到可领取",
+                category: "platform",
+                url: "https://www.paperok.com/",
+                catClass: "cat-zhh"
+            },
+            {
+                name: "Turnitin",
+                desc: "全球最广泛使用的英文查重系统，多数海外高校指定。需通过学校账号或购买个人权限使用。",
+                quota: "免费额度：通过学校获得使用权（部分高校提供），个人需付费订阅",
+                category: "english",
+                url: "https://www.turnitin.com/",
+                catClass: "cat-en"
+            },
+            {
+                name: "Grammarly Plagiarism",
+                desc: "Grammarly 内置抄袭检测，同时检查语法和原创性，英文写作辅助利器。",
+                quota: "免费额度：免费版含基础语法检查，查重功能需 Premium 订阅",
+                category: "english",
+                url: "https://www.grammarly.com/plagiarism-checker",
+                catClass: "cat-en"
+            }
+        ];
+
+        const grid = document.getElementById("cardGrid");
+        const resultCount = document.getElementById("resultCount");
+        const searchInput = document.getElementById("searchInput");
+        const tags = document.querySelectorAll(".tag");
+        let activeCategory = "all";
+        let searchQuery = "";
+
+        function renderCards() {
+            const filtered = sites.filter(site => {
+                const matchCat = activeCategory === "all" || site.category === activeCategory;
+                const query = searchQuery.toLowerCase().trim();
+                const matchSearch = !query || site.name.toLowerCase().includes(query) || site.desc.toLowerCase().includes(query);
+                return matchCat && matchSearch;
+            });
+
+            resultCount.textContent = "共找到 " + filtered.length + " 个查重平台";
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="empty-state"><div class="icon">🔍</div><p>没有找到匹配的查重平台</p><p style="font-size:0.85rem;margin-top:4px;">试试换个关键词或切换分类</p></div>';
+                return;
+            }
+
+            grid.innerHTML = filtered.map(site => {
+                const labels = { cnki: "知网系", wanfang: "万方/维普", platform: "综合平台", english: "英文查重" };
+                return '<div class="card">' +
+                    '<span class="card-category ' + site.catClass + '">' + (labels[site.category] || site.category) + '</span>' +
+                    '<h3 class="card-title">' + site.name + '</h3>' +
+                    '<p class="card-desc">' + site.desc + '</p>' +
+                    '<div class="card-quota">' + site.quota + '</div>' +
+                    '<a href="' + site.url + '" target="_blank" rel="noopener noreferrer" class="card-btn">去查重</a>' +
+                '</div>';
+            }).join("");
+        }
+
+        searchInput.addEventListener("input", function(e) {
+            searchQuery = e.target.value;
+            renderCards();
+        });
+
+        tags.forEach(function(tag) {
+            tag.addEventListener("click", function() {
+                tags.forEach(function(t) { t.classList.remove("active"); });
+                tag.classList.add("active");
+                activeCategory = tag.dataset.cat;
+                renderCards();
+            });
+        });
+
+        renderCards();
+    </script>
+</body>
+</html>
